@@ -6,13 +6,12 @@ A Python-based FAQ template builder that generates customer support prompts for 
 
 ```
 prompt_Engineering/
-├── .env.example            # Example environment variables file
 ├── .gitignore              # Git ignore rules (includes .env)
 ├── FAQ_temp.builder.py     # Main FAQ template builder script
 └── README.md              # Project documentation
 ```
 
-> **⚠️ Important**: The `.env` file containing actual API keys is not included in this repository for security reasons. You'll need to create your own based on the `.env.example` template provided.
+> **⚠️ Important**: The `.env` file containing actual API keys is not included in this repository for security reasons. You'll need to create your own environment file as described in the setup instructions below.
 
 ## 🚀 Features
 
@@ -47,11 +46,15 @@ prompt_Engineering/
 
 2. **Create your environment file**:
 
+   Create a `.env` file in the project root with your API key:
    ```bash
-   cp .env.example .env
+   # For Windows PowerShell
+   echo 'my_api = "your_actual_api_key_here"' | Out-File -FilePath .env -Encoding utf8
+   
+   # For Linux/Mac or Git Bash
+   echo 'my_api = "your_actual_api_key_here"' > .env
    ```
-
-   Then edit `.env` and replace `your_actual_api_key_here` with your actual API key
+   Replace `your_actual_api_key_here` with your actual Perplexity AI API key from https://www.perplexity.ai/
 
 3. Install dependencies (if using API features):
    ```bash
