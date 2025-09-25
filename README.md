@@ -1,4 +1,4 @@
-# FAQ Template Builder
+# prompt_Engineering
 
 A Python-based FAQ template builder that generates customer support prompts for AI assistants. This tool creates structured prompts for customer service scenarios across different business areas.
 
