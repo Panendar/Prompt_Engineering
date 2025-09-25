@@ -39,15 +39,18 @@ prompt_Engineering/
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/prompt_Engineering.git
    cd prompt_Engineering
    ```
 
 2. **Create your environment file**:
+
    ```bash
    cp .env.example .env
    ```
+
    Then edit `.env` and replace `your_actual_api_key_here` with your actual API key
 
 3. Install dependencies (if using API features):
