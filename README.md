@@ -47,13 +47,15 @@ prompt_Engineering/
 2. **Create your environment file**:
 
    Create a `.env` file in the project root with your API key:
+
    ```bash
    # For Windows PowerShell
    echo 'my_api = "your_actual_api_key_here"' | Out-File -FilePath .env -Encoding utf8
-   
+
    # For Linux/Mac or Git Bash
    echo 'my_api = "your_actual_api_key_here"' > .env
    ```
+
    Replace `your_actual_api_key_here` with your actual Perplexity AI API key from https://www.perplexity.ai/
 
 3. Install dependencies (if using API features):
