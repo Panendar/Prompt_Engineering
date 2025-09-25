@@ -6,11 +6,13 @@ A Python-based FAQ template builder that generates customer support prompts for 
 
 ```
 prompt_Engineering/
+├── .env.example            # Example environment variables file
+├── .gitignore              # Git ignore rules (includes .env)
 ├── FAQ_temp.builder.py     # Main FAQ template builder script
 └── README.md              # Project documentation
 ```
 
-> **⚠️ Important**: The `.env` file containing actual API keys and `.gitignore` are not included in this repository for security reasons. These files remain local and are excluded from version control.
+> **⚠️ Important**: The `.env` file containing actual API keys is not included in this repository for security reasons. You'll need to create your own based on the `.env.example` template provided.
 
 ## 🚀 Features
 
@@ -36,14 +38,19 @@ prompt_Engineering/
 
 ### Installation
 
-1. Clone or download the project
-2. Navigate to the project directory
-3. **Create your environment file**:
+1. Clone the repository:
    ```bash
-   # Create a .env file and add your actual API key
-   echo 'my_api = "your_actual_api_key_here"' > .env
+   git clone https://github.com/yourusername/prompt_Engineering.git
+   cd prompt_Engineering
    ```
-4. Install dependencies (if using API features):
+
+2. **Create your environment file**:
+   ```bash
+   cp .env.example .env
+   ```
+   Then edit `.env` and replace `your_actual_api_key_here` with your actual API key
+
+3. Install dependencies (if using API features):
    ```bash
    pip install requests python-dotenv
    ```
