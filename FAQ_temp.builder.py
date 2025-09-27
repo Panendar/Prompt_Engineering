@@ -1,10 +1,3 @@
-import requests
-import os
-from dotenv import load_dotenv
-
-# Load environment variables from .env file in the current directory
-load_dotenv()
-
 examples = {
     "Orders": [
         {
@@ -80,43 +73,6 @@ prompt = faq_template.format(
 )
 
 print(f"Generated Prompt:\n{prompt}")
-
-def get_response(prompt):
-    api_key = os.getenv("my_api")
-    
-    # Debug: Print API key status (without exposing the full key)
-    if api_key:
-        print(f"API key loaded: {api_key[:10]}...")
-    else:
-        print("Error: API key not found. Please check your .env file.")
-        return
-    
-    url = "https://api.perplexity.ai/chat/completions"
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json"
-    }
-    payload = {
-        "model": "sonar",
-        "messages": [{"role": "user", "content": prompt}]
-    }
-
-    try:
-        response = requests.post(url, headers=headers, json=payload)
-        response.raise_for_status()
-        
-        # Extract and print just the response content
-        result = response.json()
-        answer = result['choices'][0]['message']['content']
-        print("\nAI Response:")
-        print(answer)
-    
-    except requests.exceptions.HTTPError as e:
-        if response.status_code == 401:
-            print("Error: Invalid API key. Please check your API key in the .env file.")
-        else:
-            print(f"API Error: {e}")
-    except Exception as e:
         print(f"Error: {e}")
 
 # Call the function to get and print the response
