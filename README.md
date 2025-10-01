@@ -1,25 +1,26 @@
-# Simple Business Chatbot
+# Daily Life Assistant Chatbot (Dod Bot)
 
-A Python-based AI chatbot that provides specific, actionable responses to business enquiries. Built using LangChain and Ollama with the Gemma 2B model for efficient local AI processing.
+A Python-based AI chatbot that provides practical, actionable advice for everyday life situations. Built using LangChain and Ollama with the Gemma 2B model for efficient local AI processing.
 
 ## 📁 Project Structure
 
 ```
 prompt_Engineering/
-├── .gitignore                 # Git ignore rules
-├── basic_chatbot.py          # Main business chatbot script
-├── FAQ_temp.builder.py       # FAQ template builder (legacy)
+├── daily-chatbot.py          # Main daily life assistant chatbot
+├── daily-prompt.txt          # Jinja2 template for conversation prompts
+├── simple-business_chatbot.py # Alternative business-focused chatbot
+├── FAQ_temp.builder.py       # FAQ template builder utility
 └── README.md                 # Project documentation
 ```
 
 ## 🚀 Features
 
-- **AI-Powered Responses**: Uses Gemma 2B model via Ollama for intelligent responses
-- **Business Focus**: Specialized for handling business enquiries (orders, returns, support)
-- **Specific Answers**: Provides actionable solutions instead of generic "contact support" responses
-- **Company Customization**: Personalizes responses based on company name and business area
+- **Daily Life Focus**: Specialized for everyday challenges (study tips, health, productivity, etc.)
+- **Practical Advice**: Provides specific, actionable solutions with 3-4 sentence responses
+- **Conversation Continuity**: Maintains conversation history and asks follow-up questions
+- **Template-Based Responses**: Uses Jinja2 templates for consistent, structured responses
 - **Memory Efficient**: Uses lightweight Gemma 2B model (1.7GB) optimized for local systems
-- **Interactive Interface**: Clean command-line interface with proper error handling
+- **Clean Interface**: Simple command-line interface with proper error handling
 
 ## 🛠️ Setup
 
@@ -28,22 +29,22 @@ prompt_Engineering/
 - Python 3.x
 - Ollama (for running local AI models)
 - Required Python packages:
-  - `langchain`
   - `langchain-ollama`
+  - `jinja2`
 
 ### Installation
 
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/prompt_Engineering.git
+   git clone https://github.com/Panendar/prompt_Engineering.git
    cd prompt_Engineering
    ```
 
 2. **Install Python dependencies**:
 
    ```bash
-   pip install langchain langchain-ollama
+   pip install langchain-ollama jinja2
    ```
 
 3. **Install Ollama**:
@@ -68,26 +69,27 @@ prompt_Engineering/
    ollama serve
    ```
 
-2. **Run the chatbot** (in another terminal):
+2. **Run the daily life chatbot** (in another terminal):
    ```bash
-   python basic_chatbot.py
+   python daily-chatbot.py
    ```
 
 ### Example Interaction
 
 ```
 ✓ Connected to gemma:2b model successfully!
-Welcome to BizBot! I'm here to help with business enquiries.
-Please enter your company name: Amazon
-Please enter your business area: Orders
+Welcome to Dod Bot! I'm here to help with your daily enquiries.
+You can ask me any daily life-related questions. Type 'quit' or 'exit' to end the conversation.
 
-Great! I'm now configured to handle enquiries for Amazon in the Orders sector.
-You can ask me any business-related questions. Type 'quit' or 'exit' to end the conversation.
+User: How can I stay focused while studying?
+Dod Bot is getting your response...
+Dod Bot: Try the Pomodoro technique: work for 25 minutes, then take a 5-minute break to maintain concentration. Create a dedicated study space free from distractions like phones or social media. Use active recall methods like flashcards or teaching concepts aloud to engage your brain more effectively. What subject are you finding most challenging to focus on?
 
-User: How can I cancel my order?
-BizBot: You can cancel your order in several ways: 1) Log into your account on our website and go to 'My Orders' to cancel directly, 2) Call our order cancellation line at 1-800-CANCEL (available 24/7), or 3) Reply to your order confirmation email with 'CANCEL ORDER' and your order number. If your order hasn't shipped yet, cancellation is immediate and free.
+User: I want to wake up earlier but I keep oversleeping
+Dod Bot is getting your response...
+Dod Bot: Set your alarm across the room so you have to physically get up to turn it off. Go to bed 15 minutes earlier each night until you reach your target bedtime gradually. Expose yourself to bright light immediately upon waking to reset your circadian rhythm naturally. What time are you currently going to bed?
 
-User: exit
+User: quit
 Exiting the chatbot. Goodbye!
 ```
 
@@ -100,46 +102,73 @@ The chatbot uses the Gemma 2B model for optimal performance:
 - **Model**: `gemma:2b` (1.7GB)
 - **Temperature**: 0.3 (for focused, consistent responses)
 - **Memory requirement**: ~3GB RAM
-- **Response style**: Specific and actionable
+- **Response style**: 3-4 sentences with follow-up questions
 
-### Supported Business Areas
+### Template Customization
 
-The chatbot is optimized for:
+The bot uses `daily-prompt.txt` template with these response rules:
 
-- **Orders**: Cancellation, tracking, modifications
-- **Returns & Refunds**: Process guidance, status updates
-- **Shipping**: Delivery information, tracking
-- **Account Management**: Profile updates, login issues
-- **General Support**: Product questions, policies
+- Keep responses to exactly 3-4 sentences maximum
+- Be warm, friendly, and conversational
+- Give ONE specific, actionable solution
+- End with a follow-up question to keep conversation going
+
+### Supported Daily Life Areas
+
+The chatbot provides advice for:
+
+- **Study & Learning**: Focus techniques, time management, learning strategies
+- **Health & Wellness**: Sleep, exercise, stress management, nutrition
+- **Productivity**: Work habits, organization, goal setting
+- **Personal Development**: Skill building, motivation, habit formation
+- **Social & Relationships**: Communication, networking, friendship building
+- **Financial Management**: Budgeting, saving, expense tracking
 
 ## 📝 File Descriptions
 
-### `basic_chatbot.py`
+### `daily-chatbot.py`
 
-Main chatbot script containing:
+Main daily life assistant chatbot containing:
 
-- AI model connection and configuration
-- Business-focused prompt templates
-- Interactive chat interface
-- Error handling and recovery
-- Company and business area customization
+- AI model connection and configuration (Gemma 2B)
+- Jinja2 template integration for structured responses
+- Interactive chat interface with conversation history
+- Error handling and recovery mechanisms
+- Simple, clean user experience
 
-### `FAQ_temp.builder.py` (Legacy)
+### `daily-prompt.txt`
 
-Original FAQ template builder - kept for reference but not actively used.
+Jinja2 template file containing:
+
+- Response format rules and guidelines
+- Example conversations for consistent behavior
+- Template variables for question and history injection
+- Conversational flow instructions
+
+### `simple-business_chatbot.py`
+
+Alternative business-focused chatbot for comparison.
+
+### `FAQ_temp.builder.py`
+
+Utility script for building FAQ templates - kept for reference.
 
 ## 🔮 Future Improvements
 
-<!-- Potential enhancements to make this into an all-rounder simple chatbot:
-     - Add support for multiple domains (academic tutoring, software help, general Q&A)
-     - Implement context memory for multi-turn conversations with better continuity -->
+Potential enhancements for the daily life assistant:
+
+- **Multi-domain Support**: Academic tutoring, career advice, hobby guidance
+- **Memory Enhancement**: Better conversation context retention across sessions
+- **Personalization**: User preferences and learning from interaction patterns
+- **Voice Integration**: Speech-to-text and text-to-speech capabilities
+- **Mobile App**: GUI interface for better accessibility
 
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test with different business scenarios
+4. Test with different daily life scenarios
 5. Submit a pull request
 
 ## 📄 License
@@ -148,4 +177,4 @@ This project is available for educational and personal use.
 
 ---
 
-**Note**: This chatbot runs entirely locally using Ollama, ensuring privacy and no API costs. The Gemma 2B model provides efficient performance suitable for most business support scenarios.
+**Note**: This chatbot runs entirely locally using Ollama, ensuring complete privacy and no API costs. The Gemma 2B model provides efficient performance suitable for daily life advice and conversation, while the Jinja2 templating ensures consistent, helpful responses.
